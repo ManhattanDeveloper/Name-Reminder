@@ -15,6 +15,14 @@ var client = require('twilio')(accountSid, authToken);
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
+
+// set the home page route
+app.get('/', function(req, res) {
+
+    // ejs render automatically looks in the views folder
+    res.render('index');
+});
+
 //Retrieves all entries from the database.
 app.get('/contactlist', function(req, res){
 	db.contactlist.find(function(err, docs){
