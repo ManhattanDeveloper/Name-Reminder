@@ -16,18 +16,17 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 
-// set the home page route
+/* set the home page route
 app.get('/', function(req, res) {
 
     // ejs render automatically looks in the views folder
     res.render('index');
 });
+*/
 
 //Retrieves all entries from the database.
 app.get('/contactlist', function(req, res){
-	db.contactlist.find(function(err, docs){
-		res.send(array);
-	});
+	res.send(array);
 });
 
 //Adds an entry to the database
@@ -120,5 +119,6 @@ app.put('/contactlist/:id', function(req, res){
 	});
 });
 
-app.listen(process.env.PORT || 5000)
+sendMsg("Server Started");
+app.listen(process.env.PORT || 3000)
 console.log("Server running on port 3000");
