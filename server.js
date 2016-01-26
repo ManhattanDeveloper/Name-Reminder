@@ -67,6 +67,14 @@ var cronJob = cron.job("0 0 * * * *", function(){
 }); 
 cronJob.start();
 
+var time = 0;
+var ServerTimer = cron.job("0 * * * * *", function(){
+    // perform operation e.g. GET request http.get() etc.
+    time = time + 1;
+    console.log("The server has been up for "+time+" minutes.");
+}); 
+ServerTimer.start();
+
 /*
 function doSomething() {}
 
