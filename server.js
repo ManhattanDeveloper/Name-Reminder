@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
 });
 */
 
-//Retrieves all entries from the database.
+//Retrieves all entries from the array.
 app.get('/contactlist', function(req, res){
 	res.send(array);
 });
@@ -59,9 +59,11 @@ var sendMsg2 = function(message){
 
 
 
-var cronJob = cron.job("*/5 * * * * *", function(){
+var cronJob = cron.job("0 * * * * *", function(){
     // perform operation e.g. GET request http.get() etc.
-    console.log('cron job completed');
+    message = array[Math.round(Math.random()*array.length)-1];
+    sendMsg2(message);
+    console.log("The follow message was sent "+message);
 }); 
 cronJob.start();
 
