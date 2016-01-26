@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html ng-app = "myApp">
 <head>
-		<Title> RemindMe </title>
+		<Title> Name Reminder </title>
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -11,29 +11,24 @@
 </head>
 <body>
 	<div class="container" ng-controller="AppCtrl">
-		<h1> RemindMe </h1>
+		<h1> Name Reminder </h1>
 		<table class="table">
-			<thead>
-				<tr>
-					<th>Task</th>
-					<th>Action</th>
-				
-				</tr>
-			</thead>
 			<tbody>
 				<tr>
-					<td><input class='form-control' ng-model='task.name'></td>
-					<td><button class='btn-primary' ng-click="addContact()">Add</td>
+					<td>
+						<div class="input-group input-group-lg">
+							<input class='form-control' type="text" placeholder="Name" ng-model='task.name'>
+							<span class="input-group-btn">
+						        <button class="btn btn-default" type="button" ng-click="addContact()">Add</button>
+						        <button class="btn btn-default" type="button" ng-click="sendRandom()">Send Random</button>
+						     </span>
+						</div>
+					</td>
+					
 				</tr>
 				<tr ng-repeat = "task in contactlist">
 					<td>{{task}}</td>
-					<td>
-						<button class='btn-danger' ng-click='remove(task.name)'>Remove</button>
-					</td>
-					<td>
-						<button class='btn-warning' ng-click='sendMsg(task)'>Send</button>
-					</td>	
-					
+					<td><button class='btn-danger' ng-click="deleteName(task)">Delete</td>
 				</tr>	
 			</tbody>
 		</table>

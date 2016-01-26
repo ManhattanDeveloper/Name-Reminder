@@ -54,17 +54,20 @@ var sendMsg = function(message){
 
 };
 
-var sendMsg2 = function(message){
-	console.log(message);
-}
+var sendRandom = function(message){
+	message = array[Math.round(Math.random()*array.length)-1];
+    sendMsg(message);
+    console.log("The follow message was sent "+message);
+};
+
+app.post('/sendRandom', function(req, res){
+	sendRandom();
+});
 
 
 
 var cronJob = cron.job("0 0 * * * *", function(){
-    // perform operation e.g. GET request http.get() etc.
-    message = array[Math.round(Math.random()*array.length)-1];
-    sendMsg(message);
-    console.log("The follow message was sent "+message);
+    sendRandom();
 }); 
 cronJob.start();
 
@@ -103,12 +106,19 @@ app.post('/sendMsg', function(req, res){
 	res.send(array);
 });
 
+var deleteName = function(name){
+	for(i=0; i < array.length; i++){
+		if (array[i]==name){
+			array.splice(i, 1);
+		}
+	}
+};
+
 //Deletes an entry from the database based on the given id.
 app.delete('/contactlist/:id', function(req, res){
 	var id = req.params.id;
-	db.contactlist.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
-		res.json(doc);
-	});
+	deleteName(id);
+	console.log(id);
 });
 
 //Returns information that's related to a given id.
