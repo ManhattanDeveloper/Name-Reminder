@@ -59,7 +59,7 @@ var sendMsg2 = function(message){
 
 
 
-var cronJob = cron.job("0 * * * * *", function(){
+var cronJob = cron.job("0 0 * * * *", function(){
     // perform operation e.g. GET request http.get() etc.
     message = array[Math.round(Math.random()*array.length)-1];
     sendMsg(message);
