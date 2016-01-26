@@ -37,7 +37,8 @@ app.post('/contactlist', function(req, res){
 	});
 });
 
-var array = ["Always","First","Wow","maybe"];
+var array = ["David Sobotta", "Devon", "Raymond Torrez", "Ben Gordon",
+"Rob Spectre", "Jennie Preis", "Abe Robertson", "Ron Zori", "Natan"];
 
 var sendMsg = function(message){
 	
